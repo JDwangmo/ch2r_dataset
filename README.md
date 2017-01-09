@@ -4,8 +4,8 @@
 
 
 ### Project Structure
-- [id_dataset](https://github.com/JDwangmo/ch2r_dataset/id_dataset)
-- [ood_dataset](https://github.com/JDwangmo/ch2r_dataset/ood_dataset)
+- [id_dataset](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset)
+- [ood_dataset](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset)
 
 ### Dependence lib
 - pandas
