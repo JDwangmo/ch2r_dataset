@@ -4,8 +4,8 @@
 
 
 ### Project Structure
-- [dev_vesion](https://github.com/JDwangmo/ch2r_dataset/dev_vesion)
-- [stable_version](https://github.com/JDwangmo/ch2r_dataset/stable_version)
+- [id_dataset](https://github.com/JDwangmo/ch2r_dataset/id_dataset)
+- [ood_dataset](https://github.com/JDwangmo/ch2r_dataset/ood_dataset)
 
 ### Dependence lib
 - pandas
