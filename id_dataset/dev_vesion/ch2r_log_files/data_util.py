@@ -34,7 +34,7 @@ class DataUtil(object):
             encoding='utf8',
             sep='\t',
             quoting=1,
-            index=None,
+            # index=None,
         )
     @staticmethod
     def output_id_sentence_with_label():
@@ -46,10 +46,13 @@ class DataUtil(object):
         data = DataUtil.load_ch2r_log_files('origin/ch2r_log_from20160601_to20170109.csv')
         # 找到 ID 句子
         is_id_sentence = np.asarray(data[u'Remark'].fillna('').apply(lambda x: x.__contains__(u'所用句型')).values)
+        # 返回标签 - 句型模式
+        func_find_sentence_label = lambda x: re.findall(u'所用句型：(.*?)</p>', x)[0].split('+')[0].strip()
 
-        func_find_sentence_label = lambda x: re.findall(u'所用句型：(.*?)</p>', x)[0].replace(u' + 值未定', '').replace(
-            u' + 值已定', '')
+        func_find_sentence_attribute = lambda x: ''.join(re.findall(u"信息抓取情况：</td><td style='border-bottom:1px solid #CCC;'><p>(.*?)</p>.*所用句型", x))
+
         sentences_label = map(func_find_sentence_label, data.loc[is_id_sentence, u'Remark'].values)
+        sentence_attribute = map(func_find_sentence_attribute, data.loc[is_id_sentence, u'Remark'].values)
         # 总共有多少句
         print(len(sentences_label))
         # print(sum(is_id_sentence))
@@ -60,7 +63,8 @@ class DataUtil(object):
             'SessionID': data[u'SessionID'].iloc[id_sentences_index].values,
             'Name': data[u'Name'].iloc[id_sentences_index].values,
             'Record': data[u'Record'].iloc[id_sentences_index].values,
-            'Label': sentences_label
+            'Label': sentences_label,
+            'Attribute':sentence_attribute,
         })
         print(new_data.head())
         # 输出
@@ -68,22 +72,7 @@ class DataUtil(object):
 
 
 def main():
-    data = DataUtil.load_ch2r_log_files('origin/ch2r_log_from20160601_to20170109.csv')
-    is_id_sentence = np.asarray(data[u'Remark'].fillna('').apply(lambda x: x.__contains__(u'所用句型')).values)
-    func_find_sentence_label = lambda x: re.findall(u'所用句型：(.*?)</p>', x)[0].replace(u' + 值未定','').replace(u' + 值已定','')
-    sentences_label = map(func_find_sentence_label, data.loc[is_id_sentence, u'Remark'].values)
-    print(len(sentences_label))
-    # print(sum(is_id_sentence))
-    # 上一句才是 识别的句子
-    id_sentences_index = np.arange(len(data))[is_id_sentence] - 1
-    new_data = pd.DataFrame(data={
-        'SessionID': data[u'SessionID'].iloc[id_sentences_index].values,
-        'Name': data[u'Name'].iloc[id_sentences_index].values,
-        'Record': data[u'Record'].iloc[id_sentences_index].values,
-        'Label': sentences_label
-    })
-    print(new_data.head())
-    DataUtil.save_pd_data_to_file(new_data, 'after_clean/ch2r_log_from20160601_to20170109_id_sentences.csv')
+    DataUtil.output_id_sentence_with_label()
 
 
 if __name__ == '__main__':

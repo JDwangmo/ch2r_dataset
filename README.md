@@ -5,8 +5,10 @@
 
 ### Project Structure
 - [id_dataset](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset)
+    - ID Data Set —— In-Domain Data Set
 - [ood_dataset](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset)
-
+    - OOD Data Set
+    
 ### Dependence lib
 - pandas
 
