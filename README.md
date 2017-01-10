@@ -15,3 +15,7 @@
 ### User Manual
 - 1 
 - 2 
+
+## Change Log
+- version 1.0   
+    - 2017.01.10 发布
