@@ -11,9 +11,10 @@ from __future__ import print_function
 import logging
 import pandas as pd
 # 导入设置
-from setting import DATA_ROOT_PATH,WORD2VEC_MODEL_ROOT_PATH
+from setting import DATA_ROOT_PATH, WORD2VEC_MODEL_ROOT_PATH
 from data_processing_util.cross_validation_util import data_split_k_fold
 from data_processing_util.jiebanlp.jieba_util import Jieba_Util
+import os
 
 
 class DataUtil(object):
@@ -21,6 +22,7 @@ class DataUtil(object):
     OOD 数据集 - stable version 数据工具类
         - 数据的部分设置 在文件 setting.py 中
     """
+
     def __init__(self):
         # 训练数据的根目录
         self.dataset_root_path = DATA_ROOT_PATH
@@ -122,40 +124,40 @@ class DataUtil(object):
 
         if flag == 'v1.0(S)':
             # 使用v2.2 L版本的数据集
-            train_data_file_path = self.dataset_root_path + '20160526/train_all.csv'
-            test_data_file_path = self.dataset_root_path + '20160526/ood_labeled.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, '20160526/train_all.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, '20160526/ood_labeled.csv')
         elif flag == 'v2.2(L)':
             # 使用v2.2 L版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.2/v2.2_train_L_2302.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.2/v2.2_test_L_76.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_train_L_2302.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_test_L_76.csv')
         elif flag == 'v2.2(S)':
             # 使用v2.2 S版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.2/v2.2_train_S_1518.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.2/v2.2_test_S_131.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_train_S_1518.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_test_S_131.csv')
         elif flag == 'v2.2(Sa)':
             # 使用v2.2 Sa版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.2/v2.2_train_Sa_893.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.2/v2.2_test_Sa_79.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_train_Sa_893.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.2/v2.2_test_Sa_79.csv')
             # else:
             #     如果匹配不上，则使用v2.2 Sa版本的数据集
-            # train_data_file_path = self.dataset_root_path + 'v2.2/v2.2_train_L_2302.csv'
-            # test_data_file_path = self.dataset_root_path + 'v2.2/v2.2_test_L_76.csv'
+            # train_data_file_path = self.dataset_root_path , 'v2.2/v2.2_train_L_2302.csv'
+            # test_data_file_path = self.dataset_root_path , 'v2.2/v2.2_test_L_76.csv'
         elif flag == 'v2.3(L)':
             # 使用v2.2 L版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.3/v2.3_train_L_2300.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.3/v2.3_test_L_76.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_train_L_2300.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_test_L_76.csv')
         elif flag == 'v2.3(S)':
             # 使用v2.2 S版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.3/v2.3_train_S_1518.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.3/v2.3_test_S_131.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_train_S_1518.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_test_S_131.csv')
         elif flag == 'v2.3(Sa)':
             # 使用v2.2 Sa版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.3/v2.3_train_Sa_891.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.3/v2.3_test_Sa_79.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_train_Sa_891.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_test_Sa_79.csv')
         else:
             # 如果匹配不上，则使用v2.2 Sa版本的数据集
-            train_data_file_path = self.dataset_root_path + 'v2.3/v2.3_train_L_2300.csv'
-            test_data_file_path = self.dataset_root_path + 'v2.3/v2.3_test_L_76.csv'
+            train_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_train_L_2300.csv')
+            test_data_file_path = os.path.join(self.dataset_root_path, 'v2.3/v2.3_test_L_76.csv')
 
         return train_data_file_path, test_data_file_path
 

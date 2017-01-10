@@ -4,12 +4,12 @@
 - 来自 Ch2R 对话系统日志;
 
 ### Project Structure
-- [dev version](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset/dev_vesion): 开发版本
+- [dev version](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset/dev_version): 开发版本
 
 - [stable version](https://github.com/JDwangmo/ch2r_dataset/tree/master/id_dataset/stable_version): 稳定版本
 
 ### Dependence lib
-- 
+- [nlp_util](https://github.com/JDwangmo/nlp_util)
 
 ### User Manual
 - 1 
